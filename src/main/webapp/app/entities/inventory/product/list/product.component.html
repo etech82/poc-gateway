@@ -1,0 +1,145 @@
+<div>
+  <h2 id="page-heading" data-cy="ProductHeading">
+    <span jhiTranslate="gatewayApp.inventoryProduct.home.title">Products</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="reset()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="gatewayApp.inventoryProduct.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-product"
+        [routerLink]="['/product/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="gatewayApp.inventoryProduct.home.createLabel"> Create a new Product </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="products?.length === 0">
+    <span jhiTranslate="gatewayApp.inventoryProduct.home.notFound">No products found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="products && products.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="reset.bind(this)">
+          <th scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="name">
+            <span jhiTranslate="gatewayApp.inventoryProduct.name">Name</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="description">
+            <span jhiTranslate="gatewayApp.inventoryProduct.description">Description</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="company">
+            <span jhiTranslate="gatewayApp.inventoryProduct.company">Company</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="type">
+            <span jhiTranslate="gatewayApp.inventoryProduct.type">Type</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="storageType">
+            <span jhiTranslate="gatewayApp.inventoryProduct.storageType">Storage Type</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="price">
+            <span jhiTranslate="gatewayApp.inventoryProduct.price">Price</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="salesUnit">
+            <span jhiTranslate="gatewayApp.inventoryProduct.salesUnit">Sales Unit</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="salesQuantity">
+            <span jhiTranslate="gatewayApp.inventoryProduct.salesQuantity">Sales Quantity</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="image">
+            <span jhiTranslate="gatewayApp.inventoryProduct.image">Image</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="status">
+            <span jhiTranslate="gatewayApp.inventoryProduct.status">Status</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="productCode.id">
+            <span jhiTranslate="gatewayApp.inventoryProduct.productCode">Product Code</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="category.name">
+            <span jhiTranslate="gatewayApp.inventoryProduct.category">Category</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="packaging.name">
+            <span jhiTranslate="gatewayApp.inventoryProduct.packaging">Packaging</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']" [infiniteScrollDistance]="0">
+        <tr *ngFor="let product of products; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/product', product.id, 'view']">{{ product.id }}</a>
+          </td>
+          <td>{{ product.name }}</td>
+          <td>{{ product.description }}</td>
+          <td>{{ product.company }}</td>
+          <td jhiTranslate="{{ 'gatewayApp.ProductType.' + product.type }}">{{ product.type }}</td>
+          <td jhiTranslate="{{ 'gatewayApp.StorageType.' + product.storageType }}">{{ product.storageType }}</td>
+          <td>{{ product.price }}</td>
+          <td jhiTranslate="{{ 'gatewayApp.UnitOfMeasurement.' + product.salesUnit }}">{{ product.salesUnit }}</td>
+          <td>{{ product.salesQuantity }}</td>
+          <td>
+            <a *ngIf="product.image" (click)="openFile(product.image, product.imageContentType)">
+              <img [src]="'data:' + product.imageContentType + ';base64,' + product.image" style="max-height: 30px" alt="product image" />
+            </a>
+            <span *ngIf="product.image">{{ product.imageContentType }}, {{ byteSize(product.image) }}</span>
+          </td>
+          <td jhiTranslate="{{ 'gatewayApp.ProductStatus.' + product.status }}">{{ product.status }}</td>
+          <td>
+            <div *ngIf="product.productCode">
+              <a [routerLink]="['/product-code', product.productCode?.id, 'view']">{{ product.productCode?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="product.category">
+              <a [routerLink]="['/category', product.category?.id, 'view']">{{ product.category?.name }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="product.packaging">
+              <a [routerLink]="['/packaging', product.packaging?.id, 'view']">{{ product.packaging?.name }}</a>
+            </div>
+          </td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/product', product.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/product', product.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(product)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

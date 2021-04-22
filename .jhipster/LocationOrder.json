@@ -1,0 +1,53 @@
+{
+  "name": "LocationOrder",
+  "fields": [
+    {
+      "fieldName": "code",
+      "fieldType": "UUID",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "placedDate",
+      "fieldType": "Instant",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "OrderStatus",
+      "fieldValues": "COMPLETED,PENDING,CANCELLED",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "invoiceId",
+      "fieldType": "Long"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "orderItem",
+      "otherEntityRelationshipName": "locationOrder",
+      "relationshipName": "orderItem"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "location",
+      "otherEntityRelationshipName": "order",
+      "relationshipName": "location",
+      "otherEntityField": "locationNumber"
+    }
+  ],
+  "entityTableName": "location_order",
+  "dto": "no",
+  "pagination": "no",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": ["gateway", "purchasing"],
+  "microserviceName": "purchasing",
+  "clientRootFolder": "purchasing",
+  "databaseType": "sql",
+  "changelogDate": "20210422120639"
+}

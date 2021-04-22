@@ -1,0 +1,45 @@
+{
+  "name": "OrderItem",
+  "fields": [
+    {
+      "fieldName": "quantity",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required", "min"],
+      "fieldValidateRulesMin": "0"
+    },
+    {
+      "fieldName": "totalPrice",
+      "fieldType": "BigDecimal",
+      "fieldValidateRules": ["required", "min"],
+      "fieldValidateRulesMin": "0"
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "OrderItemStatus",
+      "fieldValues": "AVAILABLE,OUT_OF_STOCK,BACK_ORDER",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "locationOrder",
+      "otherEntityRelationshipName": "orderItem",
+      "relationshipName": "locationOrder",
+      "otherEntityField": "code"
+    }
+  ],
+  "entityTableName": "order_item",
+  "dto": "no",
+  "pagination": "no",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": ["gateway", "purchasing"],
+  "microserviceName": "purchasing",
+  "clientRootFolder": "purchasing",
+  "databaseType": "sql",
+  "changelogDate": "20210422120839"
+}

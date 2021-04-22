@@ -1,0 +1,90 @@
+<div>
+  <h2 id="page-heading" data-cy="PackagingHeading">
+    <span jhiTranslate="gatewayApp.inventoryPackaging.home.title">Packagings</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="gatewayApp.inventoryPackaging.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-packaging"
+        [routerLink]="['/packaging/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="gatewayApp.inventoryPackaging.home.createLabel"> Create a new Packaging </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="packagings?.length === 0">
+    <span jhiTranslate="gatewayApp.inventoryPackaging.home.notFound">No packagings found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="packagings && packagings.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span jhiTranslate="global.field.id">ID</span></th>
+          <th scope="col"><span jhiTranslate="gatewayApp.inventoryPackaging.name">Name</span></th>
+          <th scope="col"><span jhiTranslate="gatewayApp.inventoryPackaging.quantity">Quantity</span></th>
+          <th scope="col"><span jhiTranslate="gatewayApp.inventoryPackaging.grosWeight">Gros Weight</span></th>
+          <th scope="col"><span jhiTranslate="gatewayApp.inventoryPackaging.netWeight">Net Weight</span></th>
+          <th scope="col"><span jhiTranslate="gatewayApp.inventoryPackaging.length">Length</span></th>
+          <th scope="col"><span jhiTranslate="gatewayApp.inventoryPackaging.width">Width</span></th>
+          <th scope="col"><span jhiTranslate="gatewayApp.inventoryPackaging.height">Height</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let packaging of packagings; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/packaging', packaging.id, 'view']">{{ packaging.id }}</a>
+          </td>
+          <td>{{ packaging.name }}</td>
+          <td>{{ packaging.quantity }}</td>
+          <td>{{ packaging.grosWeight }}</td>
+          <td>{{ packaging.netWeight }}</td>
+          <td>{{ packaging.length }}</td>
+          <td>{{ packaging.width }}</td>
+          <td>{{ packaging.height }}</td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/packaging', packaging.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/packaging', packaging.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(packaging)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

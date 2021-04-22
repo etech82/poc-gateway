@@ -1,0 +1,30 @@
+{
+  "gatewayApp": {
+    "inventoryCatalog": {
+      "home": {
+        "title": "Catalogs",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Genera un nuovo Catalog",
+        "createOrEditLabel": "Genera o modifica un Catalog",
+        "notFound": "No Catalogs found"
+      },
+      "delete": {
+        "question": "Sei sicuro di volere eliminare Catalog {{ id }}?"
+      },
+      "detail": {
+        "title": "Catalog"
+      },
+      "id": "ID",
+      "code": "Code",
+      "status": "Status",
+      "productCode": "Product Code"
+    }
+  },
+  "inventoryApp": {
+    "inventoryCatalog": {
+      "created": "&Egrave; stato generato un nuovo Catalog con identificatore { param }}",
+      "updated": "&Egrave; stato aggiornato Catalog identificato da {{ param }}",
+      "deleted": "&Egrave; stato eliminato Catalog con identificatore {{ param }}"
+    }
+  }
+}

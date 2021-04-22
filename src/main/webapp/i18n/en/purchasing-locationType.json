@@ -1,0 +1,12 @@
+{
+  "gatewayApp": {
+    "LocationType": {
+      "null": "",
+      "PHARMACY": "PHARMACY",
+      "WAREHOUSE": "WAREHOUSE",
+      "CLINIC": "CLINIC",
+      "DRUGSTORE": "DRUGSTORE",
+      "SHOP": "SHOP"
+    }
+  }
+}

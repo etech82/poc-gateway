@@ -1,0 +1,76 @@
+{
+  "name": "Location",
+  "fields": [
+    {
+      "fieldName": "locationNumber",
+      "fieldType": "UUID",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "locationName",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "location",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "city",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "state",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "county",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "phoneNumber",
+      "fieldType": "BigDecimal",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "pharmacyHours",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "type",
+      "fieldType": "LocationType",
+      "fieldValues": "PHARMACY,WAREHOUSE,CLINIC,DRUGSTORE,SHOP",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "address",
+      "otherEntityRelationshipName": "location",
+      "relationshipName": "address",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "locationOrder",
+      "otherEntityRelationshipName": "location",
+      "relationshipName": "order",
+      "otherEntityField": "code"
+    }
+  ],
+  "entityTableName": "location",
+  "dto": "no",
+  "pagination": "infinite-scroll",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": ["gateway", "purchasing"],
+  "microserviceName": "purchasing",
+  "clientRootFolder": "purchasing",
+  "databaseType": "sql",
+  "changelogDate": "20210422120539"
+}

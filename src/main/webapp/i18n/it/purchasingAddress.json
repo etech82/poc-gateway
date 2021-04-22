@@ -1,0 +1,36 @@
+{
+  "gatewayApp": {
+    "purchasingAddress": {
+      "home": {
+        "title": "Addresses",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Genera un nuovo Address",
+        "createOrEditLabel": "Genera o modifica un Address",
+        "notFound": "No Addresses found"
+      },
+      "delete": {
+        "question": "Sei sicuro di volere eliminare Address {{ id }}?"
+      },
+      "detail": {
+        "title": "Address"
+      },
+      "id": "ID",
+      "address1": "Address 1",
+      "address2": "Address 2",
+      "city": "City",
+      "postcode": "Postcode",
+      "country": "Country",
+      "timezone": "Timezone",
+      "latitude": "Latitude",
+      "longitude": "Longitude",
+      "location": "Location"
+    }
+  },
+  "purchasingApp": {
+    "purchasingAddress": {
+      "created": "&Egrave; stato generato un nuovo Address con identificatore { param }}",
+      "updated": "&Egrave; stato aggiornato Address identificato da {{ param }}",
+      "deleted": "&Egrave; stato eliminato Address con identificatore {{ param }}"
+    }
+  }
+}

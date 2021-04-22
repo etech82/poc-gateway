@@ -1,0 +1,60 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="address">
+      <h2 data-cy="addressDetailsHeading"><span jhiTranslate="gatewayApp.purchasingAddress.detail.title">Address</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ address.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.purchasingAddress.address1">Address 1</span></dt>
+        <dd>
+          <span>{{ address.address1 }}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.purchasingAddress.address2">Address 2</span></dt>
+        <dd>
+          <span>{{ address.address2 }}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.purchasingAddress.city">City</span></dt>
+        <dd>
+          <span>{{ address.city }}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.purchasingAddress.postcode">Postcode</span></dt>
+        <dd>
+          <span>{{ address.postcode }}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.purchasingAddress.country">Country</span></dt>
+        <dd>
+          <span>{{ address.country }}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.purchasingAddress.timezone">Timezone</span></dt>
+        <dd>
+          <span>{{ address.timezone }}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.purchasingAddress.latitude">Latitude</span></dt>
+        <dd>
+          <span>{{ address.latitude }}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.purchasingAddress.longitude">Longitude</span></dt>
+        <dd>
+          <span>{{ address.longitude }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/address', address.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

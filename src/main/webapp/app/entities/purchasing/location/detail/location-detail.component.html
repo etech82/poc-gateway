@@ -1,0 +1,70 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="location">
+      <h2 data-cy="locationDetailsHeading"><span jhiTranslate="gatewayApp.purchasingLocation.detail.title">Location</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ location.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.purchasingLocation.locationNumber">Location Number</span></dt>
+        <dd>
+          <span>{{ location.locationNumber }}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.purchasingLocation.locationName">Location Name</span></dt>
+        <dd>
+          <span>{{ location.locationName }}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.purchasingLocation.location">Location</span></dt>
+        <dd>
+          <span>{{ location.location }}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.purchasingLocation.city">City</span></dt>
+        <dd>
+          <span>{{ location.city }}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.purchasingLocation.state">State</span></dt>
+        <dd>
+          <span>{{ location.state }}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.purchasingLocation.county">County</span></dt>
+        <dd>
+          <span>{{ location.county }}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.purchasingLocation.phoneNumber">Phone Number</span></dt>
+        <dd>
+          <span>{{ location.phoneNumber }}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.purchasingLocation.pharmacyHours">Pharmacy Hours</span></dt>
+        <dd>
+          <span>{{ location.pharmacyHours }}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.purchasingLocation.type">Type</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'gatewayApp.LocationType.' + location.type }}">{{ location.type }}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.purchasingLocation.address">Address</span></dt>
+        <dd>
+          <div *ngIf="location.address">
+            <a [routerLink]="['/address', location.address?.id, 'view']">{{ location.address?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/location', location.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,30 @@
+{
+  "gatewayApp": {
+    "inventoryCategory": {
+      "home": {
+        "title": "Categories",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Genera un nuovo Category",
+        "createOrEditLabel": "Genera o modifica un Category",
+        "notFound": "No Categories found"
+      },
+      "delete": {
+        "question": "Sei sicuro di volere eliminare Category {{ id }}?"
+      },
+      "detail": {
+        "title": "Category"
+      },
+      "id": "ID",
+      "name": "Name",
+      "description": "Description",
+      "product": "Product"
+    }
+  },
+  "inventoryApp": {
+    "inventoryCategory": {
+      "created": "&Egrave; stato generato un nuovo Category con identificatore { param }}",
+      "updated": "&Egrave; stato aggiornato Category identificato da {{ param }}",
+      "deleted": "&Egrave; stato eliminato Category con identificatore {{ param }}"
+    }
+  }
+}

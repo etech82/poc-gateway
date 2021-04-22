@@ -1,0 +1,9 @@
+export enum StorageType {
+  SHELF = 'SHELF',
+
+  STOREHOUSE = 'STOREHOUSE',
+
+  DRAWERS = 'DRAWERS',
+
+  REFRIGERATOR = 'REFRIGERATOR',
+}

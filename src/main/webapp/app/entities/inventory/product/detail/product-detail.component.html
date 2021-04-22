@@ -1,0 +1,91 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="product">
+      <h2 data-cy="productDetailsHeading"><span jhiTranslate="gatewayApp.inventoryProduct.detail.title">Product</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ product.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.inventoryProduct.name">Name</span></dt>
+        <dd>
+          <span>{{ product.name }}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.inventoryProduct.description">Description</span></dt>
+        <dd>
+          <span>{{ product.description }}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.inventoryProduct.company">Company</span></dt>
+        <dd>
+          <span>{{ product.company }}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.inventoryProduct.type">Type</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'gatewayApp.ProductType.' + product.type }}">{{ product.type }}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.inventoryProduct.storageType">Storage Type</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'gatewayApp.StorageType.' + product.storageType }}">{{ product.storageType }}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.inventoryProduct.price">Price</span></dt>
+        <dd>
+          <span>{{ product.price }}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.inventoryProduct.salesUnit">Sales Unit</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'gatewayApp.UnitOfMeasurement.' + product.salesUnit }}">{{ product.salesUnit }}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.inventoryProduct.salesQuantity">Sales Quantity</span></dt>
+        <dd>
+          <span>{{ product.salesQuantity }}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.inventoryProduct.image">Image</span></dt>
+        <dd>
+          <div *ngIf="product.image">
+            <a (click)="openFile(product.image, product.imageContentType)">
+              <img [src]="'data:' + product.imageContentType + ';base64,' + product.image" style="max-width: 100%" alt="product image" />
+            </a>
+            {{ product.imageContentType }}, {{ byteSize(product.image) }}
+          </div>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.inventoryProduct.status">Status</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'gatewayApp.ProductStatus.' + product.status }}">{{ product.status }}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.inventoryProduct.productCode">Product Code</span></dt>
+        <dd>
+          <div *ngIf="product.productCode">
+            <a [routerLink]="['/product-code', product.productCode?.id, 'view']">{{ product.productCode?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.inventoryProduct.category">Category</span></dt>
+        <dd>
+          <div *ngIf="product.category">
+            <a [routerLink]="['/category', product.category?.id, 'view']">{{ product.category?.name }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.inventoryProduct.packaging">Packaging</span></dt>
+        <dd>
+          <div *ngIf="product.packaging">
+            <a [routerLink]="['/packaging', product.packaging?.id, 'view']">{{ product.packaging?.name }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/product', product.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

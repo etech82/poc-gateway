@@ -1,0 +1,9 @@
+{
+  "gatewayApp": {
+    "CatalogStatus": {
+      "null": "",
+      "ACTIVE": "ACTIVE",
+      "DISALBED": "DISALBED"
+    }
+  }
+}

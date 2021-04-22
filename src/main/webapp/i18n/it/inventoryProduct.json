@@ -1,0 +1,41 @@
+{
+  "gatewayApp": {
+    "inventoryProduct": {
+      "home": {
+        "title": "Products",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Genera un nuovo Product",
+        "createOrEditLabel": "Genera o modifica un Product",
+        "notFound": "No Products found"
+      },
+      "delete": {
+        "question": "Sei sicuro di volere eliminare Product {{ id }}?"
+      },
+      "detail": {
+        "title": "Product"
+      },
+      "id": "ID",
+      "name": "Name",
+      "description": "Description",
+      "company": "Company",
+      "type": "Type",
+      "storageType": "Storage Type",
+      "price": "Price",
+      "salesUnit": "Sales Unit",
+      "salesQuantity": "Sales Quantity",
+      "image": "Image",
+      "status": "Status",
+      "productCode": "Product Code",
+      "category": "Category",
+      "packaging": "Packaging",
+      "catalog": "Catalog"
+    }
+  },
+  "inventoryApp": {
+    "inventoryProduct": {
+      "created": "&Egrave; stato generato un nuovo Product con identificatore { param }}",
+      "updated": "&Egrave; stato aggiornato Product identificato da {{ param }}",
+      "deleted": "&Egrave; stato eliminato Product con identificatore {{ param }}"
+    }
+  }
+}

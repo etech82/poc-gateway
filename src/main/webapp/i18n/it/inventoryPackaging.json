@@ -1,0 +1,35 @@
+{
+  "gatewayApp": {
+    "inventoryPackaging": {
+      "home": {
+        "title": "Packagings",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Genera un nuovo Packaging",
+        "createOrEditLabel": "Genera o modifica un Packaging",
+        "notFound": "No Packagings found"
+      },
+      "delete": {
+        "question": "Sei sicuro di volere eliminare Packaging {{ id }}?"
+      },
+      "detail": {
+        "title": "Packaging"
+      },
+      "id": "ID",
+      "name": "Name",
+      "quantity": "Quantity",
+      "grosWeight": "Gros Weight",
+      "netWeight": "Net Weight",
+      "length": "Length",
+      "width": "Width",
+      "height": "Height",
+      "product": "Product"
+    }
+  },
+  "inventoryApp": {
+    "inventoryPackaging": {
+      "created": "&Egrave; stato generato un nuovo Packaging con identificatore { param }}",
+      "updated": "&Egrave; stato aggiornato Packaging identificato da {{ param }}",
+      "deleted": "&Egrave; stato eliminato Packaging con identificatore {{ param }}"
+    }
+  }
+}

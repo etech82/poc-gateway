@@ -1,0 +1,197 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-location-heading"
+        data-cy="LocationCreateUpdateHeading"
+        jhiTranslate="gatewayApp.purchasingLocation.home.createOrEditLabel"
+      >
+        Create or edit a Location
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="gatewayApp.purchasingLocation.locationNumber" for="field_locationNumber"
+            >Location Number</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="locationNumber"
+            id="field_locationNumber"
+            data-cy="locationNumber"
+            formControlName="locationNumber"
+          />
+          <div
+            *ngIf="
+              editForm.get('locationNumber')!.invalid && (editForm.get('locationNumber')!.dirty || editForm.get('locationNumber')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('locationNumber')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="gatewayApp.purchasingLocation.locationName" for="field_locationName"
+            >Location Name</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="locationName"
+            id="field_locationName"
+            data-cy="locationName"
+            formControlName="locationName"
+          />
+          <div
+            *ngIf="editForm.get('locationName')!.invalid && (editForm.get('locationName')!.dirty || editForm.get('locationName')!.touched)"
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('locationName')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="gatewayApp.purchasingLocation.location" for="field_location">Location</label>
+          <input type="text" class="form-control" name="location" id="field_location" data-cy="location" formControlName="location" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="gatewayApp.purchasingLocation.city" for="field_city">City</label>
+          <input type="text" class="form-control" name="city" id="field_city" data-cy="city" formControlName="city" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="gatewayApp.purchasingLocation.state" for="field_state">State</label>
+          <input type="text" class="form-control" name="state" id="field_state" data-cy="state" formControlName="state" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="gatewayApp.purchasingLocation.county" for="field_county">County</label>
+          <input type="text" class="form-control" name="county" id="field_county" data-cy="county" formControlName="county" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="gatewayApp.purchasingLocation.phoneNumber" for="field_phoneNumber"
+            >Phone Number</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="phoneNumber"
+            id="field_phoneNumber"
+            data-cy="phoneNumber"
+            formControlName="phoneNumber"
+          />
+          <div *ngIf="editForm.get('phoneNumber')!.invalid && (editForm.get('phoneNumber')!.dirty || editForm.get('phoneNumber')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('phoneNumber')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('phoneNumber')?.errors?.number"
+              jhiTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="gatewayApp.purchasingLocation.pharmacyHours" for="field_pharmacyHours"
+            >Pharmacy Hours</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="pharmacyHours"
+            id="field_pharmacyHours"
+            data-cy="pharmacyHours"
+            formControlName="pharmacyHours"
+          />
+          <div
+            *ngIf="
+              editForm.get('pharmacyHours')!.invalid && (editForm.get('pharmacyHours')!.dirty || editForm.get('pharmacyHours')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('pharmacyHours')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="gatewayApp.purchasingLocation.type" for="field_type">Type</label>
+          <select class="form-control" name="type" formControlName="type" id="field_type" data-cy="type">
+            <option [ngValue]="null">{{ 'gatewayApp.LocationType.null' | translate }}</option>
+            <option value="PHARMACY">{{ 'gatewayApp.LocationType.PHARMACY' | translate }}</option>
+            <option value="WAREHOUSE">{{ 'gatewayApp.LocationType.WAREHOUSE' | translate }}</option>
+            <option value="CLINIC">{{ 'gatewayApp.LocationType.CLINIC' | translate }}</option>
+            <option value="DRUGSTORE">{{ 'gatewayApp.LocationType.DRUGSTORE' | translate }}</option>
+            <option value="SHOP">{{ 'gatewayApp.LocationType.SHOP' | translate }}</option>
+          </select>
+          <div *ngIf="editForm.get('type')!.invalid && (editForm.get('type')!.dirty || editForm.get('type')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('type')?.errors?.required" jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="gatewayApp.purchasingLocation.address" for="field_address">Address</label>
+          <select class="form-control" id="field_address" data-cy="address" name="address" formControlName="address">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="addressOption.id === editForm.get('address')!.value?.id ? editForm.get('address')!.value : addressOption"
+              *ngFor="let addressOption of addressesCollection; trackBy: trackAddressById"
+            >
+              {{ addressOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

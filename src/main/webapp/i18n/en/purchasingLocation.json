@@ -1,0 +1,38 @@
+{
+  "gatewayApp": {
+    "purchasingLocation": {
+      "home": {
+        "title": "Locations",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Location",
+        "createOrEditLabel": "Create or edit a Location",
+        "notFound": "No Locations found"
+      },
+      "delete": {
+        "question": "Are you sure you want to delete Location {{ id }}?"
+      },
+      "detail": {
+        "title": "Location"
+      },
+      "id": "ID",
+      "locationNumber": "Location Number",
+      "locationName": "Location Name",
+      "location": "Location",
+      "city": "City",
+      "state": "State",
+      "county": "County",
+      "phoneNumber": "Phone Number",
+      "pharmacyHours": "Pharmacy Hours",
+      "type": "Type",
+      "address": "Address",
+      "order": "Order"
+    }
+  },
+  "purchasingApp": {
+    "purchasingLocation": {
+      "created": "A new Location is created with identifier {{ param }}",
+      "updated": "A Location is updated with identifier {{ param }}",
+      "deleted": "A Location is deleted with identifier {{ param }}"
+    }
+  }
+}

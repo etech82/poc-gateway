@@ -1,0 +1,90 @@
+<div>
+  <h2 id="page-heading" data-cy="LocationOrderHeading">
+    <span jhiTranslate="gatewayApp.purchasingLocationOrder.home.title">Location Orders</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="gatewayApp.purchasingLocationOrder.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-location-order"
+        [routerLink]="['/location-order/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="gatewayApp.purchasingLocationOrder.home.createLabel"> Create a new Location Order </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="locationOrders?.length === 0">
+    <span jhiTranslate="gatewayApp.purchasingLocationOrder.home.notFound">No locationOrders found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="locationOrders && locationOrders.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span jhiTranslate="global.field.id">ID</span></th>
+          <th scope="col"><span jhiTranslate="gatewayApp.purchasingLocationOrder.code">Code</span></th>
+          <th scope="col"><span jhiTranslate="gatewayApp.purchasingLocationOrder.placedDate">Placed Date</span></th>
+          <th scope="col"><span jhiTranslate="gatewayApp.purchasingLocationOrder.status">Status</span></th>
+          <th scope="col"><span jhiTranslate="gatewayApp.purchasingLocationOrder.invoiceId">Invoice Id</span></th>
+          <th scope="col"><span jhiTranslate="gatewayApp.purchasingLocationOrder.location">Location</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let locationOrder of locationOrders; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/location-order', locationOrder.id, 'view']">{{ locationOrder.id }}</a>
+          </td>
+          <td>{{ locationOrder.code }}</td>
+          <td>{{ locationOrder.placedDate | formatMediumDatetime }}</td>
+          <td jhiTranslate="{{ 'gatewayApp.OrderStatus.' + locationOrder.status }}">{{ locationOrder.status }}</td>
+          <td>{{ locationOrder.invoiceId }}</td>
+          <td>
+            <div *ngIf="locationOrder.location">
+              <a [routerLink]="['/location', locationOrder.location?.id, 'view']">{{ locationOrder.location?.locationNumber }}</a>
+            </div>
+          </td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/location-order', locationOrder.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/location-order', locationOrder.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(locationOrder)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

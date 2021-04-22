@@ -1,0 +1,11 @@
+{
+  "gatewayApp": {
+    "ProductType": {
+      "null": "",
+      "DRUG": "DRUG",
+      "MEDICINE": "MEDICINE",
+      "SPICE": "SPICE",
+      "NA": "NA"
+    }
+  }
+}

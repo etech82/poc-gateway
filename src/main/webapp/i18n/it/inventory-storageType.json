@@ -1,0 +1,11 @@
+{
+  "gatewayApp": {
+    "StorageType": {
+      "null": "",
+      "SHELF": "SHELF",
+      "STOREHOUSE": "STOREHOUSE",
+      "DRAWERS": "DRAWERS",
+      "REFRIGERATOR": "REFRIGERATOR"
+    }
+  }
+}

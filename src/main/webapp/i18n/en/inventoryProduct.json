@@ -1,0 +1,41 @@
+{
+  "gatewayApp": {
+    "inventoryProduct": {
+      "home": {
+        "title": "Products",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Product",
+        "createOrEditLabel": "Create or edit a Product",
+        "notFound": "No Products found"
+      },
+      "delete": {
+        "question": "Are you sure you want to delete Product {{ id }}?"
+      },
+      "detail": {
+        "title": "Product"
+      },
+      "id": "ID",
+      "name": "Name",
+      "description": "Description",
+      "company": "Company",
+      "type": "Type",
+      "storageType": "Storage Type",
+      "price": "Price",
+      "salesUnit": "Sales Unit",
+      "salesQuantity": "Sales Quantity",
+      "image": "Image",
+      "status": "Status",
+      "productCode": "Product Code",
+      "category": "Category",
+      "packaging": "Packaging",
+      "catalog": "Catalog"
+    }
+  },
+  "inventoryApp": {
+    "inventoryProduct": {
+      "created": "A new Product is created with identifier {{ param }}",
+      "updated": "A Product is updated with identifier {{ param }}",
+      "deleted": "A Product is deleted with identifier {{ param }}"
+    }
+  }
+}

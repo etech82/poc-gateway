@@ -1,0 +1,35 @@
+{
+  "gatewayApp": {
+    "inventoryPackaging": {
+      "home": {
+        "title": "Packagings",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Packaging",
+        "createOrEditLabel": "Create or edit a Packaging",
+        "notFound": "No Packagings found"
+      },
+      "delete": {
+        "question": "Are you sure you want to delete Packaging {{ id }}?"
+      },
+      "detail": {
+        "title": "Packaging"
+      },
+      "id": "ID",
+      "name": "Name",
+      "quantity": "Quantity",
+      "grosWeight": "Gros Weight",
+      "netWeight": "Net Weight",
+      "length": "Length",
+      "width": "Width",
+      "height": "Height",
+      "product": "Product"
+    }
+  },
+  "inventoryApp": {
+    "inventoryPackaging": {
+      "created": "A new Packaging is created with identifier {{ param }}",
+      "updated": "A Packaging is updated with identifier {{ param }}",
+      "deleted": "A Packaging is deleted with identifier {{ param }}"
+    }
+  }
+}

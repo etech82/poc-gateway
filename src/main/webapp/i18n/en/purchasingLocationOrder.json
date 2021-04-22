@@ -1,0 +1,33 @@
+{
+  "gatewayApp": {
+    "purchasingLocationOrder": {
+      "home": {
+        "title": "Location Orders",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Location Order",
+        "createOrEditLabel": "Create or edit a Location Order",
+        "notFound": "No Location Orders found"
+      },
+      "delete": {
+        "question": "Are you sure you want to delete Location Order {{ id }}?"
+      },
+      "detail": {
+        "title": "Location Order"
+      },
+      "id": "ID",
+      "code": "Code",
+      "placedDate": "Placed Date",
+      "status": "Status",
+      "invoiceId": "Invoice Id",
+      "orderItem": "Order Item",
+      "location": "Location"
+    }
+  },
+  "purchasingApp": {
+    "purchasingLocationOrder": {
+      "created": "A new Location Order is created with identifier {{ param }}",
+      "updated": "A Location Order is updated with identifier {{ param }}",
+      "deleted": "A Location Order is deleted with identifier {{ param }}"
+    }
+  }
+}

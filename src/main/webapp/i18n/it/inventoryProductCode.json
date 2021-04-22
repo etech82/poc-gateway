@@ -1,0 +1,30 @@
+{
+  "gatewayApp": {
+    "inventoryProductCode": {
+      "home": {
+        "title": "ProductCodes",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Genera un nuovo Product Code",
+        "createOrEditLabel": "Genera o modifica un Product Code",
+        "notFound": "No Product Codes found"
+      },
+      "delete": {
+        "question": "Sei sicuro di volere eliminare Product Code {{ id }}?"
+      },
+      "detail": {
+        "title": "Product Code"
+      },
+      "id": "ID",
+      "upc": "Upc",
+      "barcode": "Barcode",
+      "product": "Product"
+    }
+  },
+  "inventoryApp": {
+    "inventoryProductCode": {
+      "created": "&Egrave; stato generato un nuovo Product Code con identificatore { param }}",
+      "updated": "&Egrave; stato aggiornato Product Code identificato da {{ param }}",
+      "deleted": "&Egrave; stato eliminato Product Code con identificatore {{ param }}"
+    }
+  }
+}
