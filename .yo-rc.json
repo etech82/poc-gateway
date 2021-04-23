@@ -52,6 +52,9 @@
       "Product",
       "ProductCode"
     ],
-    "lastLiquibaseTimestamp": 1619093499000
+    "lastLiquibaseTimestamp": 1619093499000,
+    "appFolder": "gateway",
+    "targetImageName": "rxi/gateway",
+    "dbPeerCount": 1
   }
 }
